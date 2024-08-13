@@ -38,20 +38,5 @@ namespace AspNetCore.Identity.Mongo.Model
         public List<TwoFactorRecoveryCode> RecoveryCodes { get; set; }
     }
 
-    [BsonIgnoreExtraElements]
-    public class CustomIdentityUserClaim<TKey> : IdentityUserClaim<TKey> where TKey : IEquatable<TKey>
-    {
-        //
-        // Summary:
-        //     Gets or sets the claim type for this claim.
-        [BsonIgnore]
-        [BsonElement("Type")]
-        public override string ClaimType { get; set; }
-        //
-        // Summary:
-        //     Gets or sets the claim value for this claim.
-        [BsonIgnore]
-        [BsonElement("Value")]
-        public override string ClaimValue { get; set; }
-    }
+   
 }

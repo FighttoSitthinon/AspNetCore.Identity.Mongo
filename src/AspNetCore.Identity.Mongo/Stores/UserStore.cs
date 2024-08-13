@@ -293,7 +293,7 @@ namespace AspNetCore.Identity.Mongo.Stores
 
             foreach (var claim in claims)
             {
-                var identityClaim = new IdentityUserClaim<string>()
+                var identityClaim = new CustomIdentityUserClaim<string>()
                 {
                     ClaimType = claim.Type,
                     ClaimValue = claim.Value

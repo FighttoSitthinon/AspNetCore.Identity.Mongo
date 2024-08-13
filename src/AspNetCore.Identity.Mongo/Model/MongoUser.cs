@@ -18,7 +18,7 @@ namespace AspNetCore.Identity.Mongo.Model
         public MongoUser()
         {
             Roles = new List<string>();
-            Claims = new List<IdentityUserClaim<string>>();
+            Claims = new List<CustomIdentityUserClaim<string>>();
             Logins = new List<IdentityUserLogin<string>>();
             Tokens = new List<IdentityUserToken<string>>();
         }
@@ -31,10 +31,27 @@ namespace AspNetCore.Identity.Mongo.Model
 
         public List<string> Roles { get; set; }
 
-        public List<IdentityUserClaim<string>> Claims { get; set; }
+        public List<CustomIdentityUserClaim<string>> Claims { get; set; }
 
         public List<IdentityUserLogin<string>> Logins { get; set; }
 
         public List<IdentityUserToken<string>> Tokens { get; set; }
+    }
+
+    [BsonIgnoreExtraElements]
+    public class CustomIdentityUserClaim<TKey> : IdentityUserClaim<TKey> where TKey : IEquatable<TKey>
+    {
+        //
+        // Summary:
+        //     Gets or sets the claim type for this claim.
+        [BsonIgnore]
+        [BsonElement("Type")]
+        public override string ClaimType { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the claim value for this claim.
+        [BsonIgnore]
+        [BsonElement("Value")]
+        public override string ClaimValue { get; set; }
     }
 }
