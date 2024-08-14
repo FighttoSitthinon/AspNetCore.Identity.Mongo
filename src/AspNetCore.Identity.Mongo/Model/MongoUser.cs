@@ -44,13 +44,11 @@ namespace AspNetCore.Identity.Mongo.Model
         //
         // Summary:
         //     Gets or sets the claim type for this claim.
-        [BsonIgnore]
         [BsonElement("Type")]
         public override string ClaimType { get; set; }
         //
         // Summary:
         //     Gets or sets the claim value for this claim.
-        [BsonIgnore]
         [BsonElement("Value")]
         public override string ClaimValue { get; set; }
     }
